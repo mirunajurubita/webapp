@@ -1,0 +1,118 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <title>Employee Sign Up</title>
+    <!-- Custom CSS -->
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+
+  </head>
+  <nav class="navbar navbar-expand-lg  " style = "background-color:#343a40">
+    <div class="container-fluid ">
+      <a class="navbar-brand"  style = "color:white" href="/" >Employees Managemenet App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active"  style = "color:white"aria-current="page" href="loginUser">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page"  style = "color:white" href="registerAdmin">Admin Register</a>
+          </li>
+
+          {%if user.is_authenticated%}
+
+          <li class="nav-item">
+            <a class="nav-link active"  style = "color:white" href="logoutUser">Logout User</a>
+          </li>
+          {%endif%}
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <body>
+  <div class="content bg-dark ">
+    <div class="container bg-dark">
+      <div class="row justify-content-center">
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-12">
+              <div class="form-block">
+                  <div class="mb-4">
+                    <br>
+                    <br>
+                    <br>
+                      <h1 style = "color:rgb(204, 204, 204)">Employee Registration page</h1>
+                </div>
+
+                <form  method="post">
+                    {% csrf_token %}
+                    <div class="form-group first">
+                        <label for="username" style = "color:rgb(204, 204, 204)">First Name</label>
+                          {{ form.first_name }}
+                      </div>
+                    <div class="form-group first">
+                        <label for="username" style = "color:rgb(204, 204, 204)">Last Name</label>
+                          {{ form.last_name }}
+                      </div>
+                  <div class="form-group first">
+                    <label for="username" style = "color:rgb(204, 204, 204)">Username</label>
+                      {{ form.username }}
+                  </div>
+                  <div class="form-group first">
+                    <label for="email" style = "color:rgb(204, 204, 204)">Email</label>
+                      {{ form.email}}
+                  </div>
+                  <div class="form-group first">
+                    <label for="address" style = "color:rgb(204, 204, 204)">Address</label>
+                      {{ form.address}}
+                  </div>
+                  <div class="form-group last mb-4">
+                    <label for="password" style = "color:rgb(204, 204, 204)">Password</label>
+                      {{ form.password1 }}
+                  </div>
+                  <div class="form-group last mb-4">
+                    <label for="password2" style = "color:rgb(204, 204, 204)">Confirm Password</label>
+                      {{ form.password2 }}
+                  </div>
+                 
+                    <span class="text-error">{{ form.errors }}</span>
+                  <input type="submit"  value="Register" class="btn btn-block btn-lg btn-info">
+                </form>
+                <br>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+<!-- ============================================================== -->
+    <!-- All Required js -->
+    <!-- ============================================================== -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <!--     <script src="{% static 'libs/popper.js' %}/dist/umd/popper.min.js' %}"></script> -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugin js -->
+    <!-- ============================================================== -->
+    <script>
+    $('[data-toggle="tooltip"]').tooltip();
+    $(".preloader").fadeOut();
+    </script>
+</body>
+</html>
